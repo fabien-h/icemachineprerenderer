@@ -1,0 +1,20 @@
+{
+    "apps": [ {
+        "name": "icemachineprerenderer",
+        "script": "server.js",
+        "cwd": "/var/www",
+        "args": [ "--mongoURL", "mongodb://localhost:27017/local" ],
+        "interpreter": "node",
+        "node_args": "",
+        "instances": 1,
+        "exec_mode": "fork",
+        "env": {
+            "NODE_ENV": "PROD",
+            "PORT": 8080
+        },
+        "watch": true,
+        "ignore_watch": [ "node_modules" ],
+        "max_memory_restart": "400M",
+        "merge_logs": true
+    } ]
+}

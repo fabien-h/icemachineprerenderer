@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+npm-debug.log
+
+# local database
+data
+
+# modules : need to npm i
+node_modules
+
+# mac os files
+*/.DS_Store
+.DS_Store
+.DS_Store?

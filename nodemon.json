@@ -1,0 +1,12 @@
+{
+  "watch": [
+    "src/**/*.js",
+    "package.json"
+  ],
+  "verbose": true,
+  "execMap": {
+    "js": "node --harmony"
+  },
+  "ext": "js json",
+  "legacyWatch": true
+}
