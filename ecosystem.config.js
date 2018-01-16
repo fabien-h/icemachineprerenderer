@@ -14,7 +14,16 @@ module.exports = {
             },
             env_production: {
                 NODE_ENV: 'production'
-            }
+            },
+            args: ["--mongoURL", "mongodb://localhost:27017/local"],
+            interpreter: "node",
+            node_args: "",
+            instances: 1,
+            exec_mode: "fork",
+            watch: true,
+            ignore_watch: ["node_modules"],
+            max_memory_restart: "400M",
+            merge_logs: true
         },
     ],
 
