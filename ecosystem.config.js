@@ -27,7 +27,7 @@ module.exports = {
             user: 'fabien',
             host: '67.205.163.60',
             ref: 'origin/master',
-            repo: 'git@github.com:fabien-h/icemachineprerenderer.git',
+            repo: 'https://github.com/fabien-h/icemachineprerenderer.git',
             path: '/var/www/',
             'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
         },
