@@ -32,7 +32,7 @@ module.exports = {
      * http://pm2.keymetrics.io/docs/usage/deployment/
      */
     deploy: {
-        production: {
+        productionFabien: {
             user: 'fabien',
             host: '67.205.163.60',
             ref: 'origin/master',

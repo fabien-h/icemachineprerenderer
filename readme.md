@@ -1,3 +1,10 @@
+# Goal
+
+[Ice machine website](https://www.icemachinesplus.io/) will serve prerendered version of its pages. The service will serve two purpose :
+
+- It will take a list of URLs on `/postpagestoprerender`. Those URLs will be prerendered with [Chrome Headless](https://developers.google.com/web/updates/2017/04/headless-chrome) and the html content and the meta will be saved in a local MongoDB base.
+- It will serve the content cached on `/getprerenderdata?pagePath=__path__`. The main application will request it before serving it to the end client.
+
 # Dev
 
 Make sure you have dependencies installed :
@@ -16,43 +23,8 @@ To get dev started, in tow terminals :
 
 # Prod
 
-Check that we have all the dependencies
+The deployment process is started with `pm2 deploy productionFabien update`. => you will need to duplicate the script with your own user.
 
-- sudo apt-get install gconf-service
-- sudo apt-get install libasound2
-- sudo apt-get install libatk1.0-0
-- sudo apt-get install libc6
-- sudo apt-get install libcairo2
-- sudo apt-get install libcups2
-- sudo apt-get install libdbus-1-3
-- sudo apt-get install libexpat1
-- sudo apt-get install libfontconfig1
-- sudo apt-get install libgcc1
-- sudo apt-get install libgconf-2-4
-- sudo apt-get install libgdk-pixbuf2.0-0
-- sudo apt-get install libglib2.0-0
-- sudo apt-get install libgtk-3-0
-- sudo apt-get install libnspr4
-- sudo apt-get install libpango-1.0-0
-- sudo apt-get install libpangocairo-1.0-0
-- sudo apt-get install libstdc++6
-- sudo apt-get install libx11-6
-- sudo apt-get install libx11-xcb1
-- sudo apt-get install libxcb1
-- sudo apt-get install libxcomposite1
-- sudo apt-get install libxcursor1
-- sudo apt-get install libxdamage1
-- sudo apt-get install libxext6
-- sudo apt-get install libxfixes3
-- sudo apt-get install libxi6
-- sudo apt-get install libxrandr2
-- sudo apt-get install libxrender1
-- sudo apt-get install libxss1
-- sudo apt-get install libxtst6
-- sudo apt-get install ca-certificates
-- sudo apt-get install fonts-liberation
-- sudo apt-get install libappindicator1
-- sudo apt-get install libnss3
-- sudo apt-get install lsb-release
-- sudo apt-get install xdg-utils
-- sudo apt-get install wget
+Our production server is `67.205.163.60`. Before deployment, you need to install your own SSH keys on the server.
+
+To monitor and debug the service, login to the server with `ssh yourUserName@67.205.163.60` ; then you can launch the monitor with `pm2 monit`.
