@@ -56,7 +56,7 @@ async function prerender(targetPage, path) {
         const price = await page.evaluate(`(document.querySelector('meta[property="product:price:amount"]') || {}).content || ''`);
         const brand = await page.evaluate(`(document.querySelector('meta[property="og:brand"]') || {}).content || ''`);
         const keywords = await page.evaluate(`(document.querySelector('meta[name="keywords"]') || {} ).content || ''`);
-        const content = await page.$eval('#react-root', el => el.innerHTML || null);
+        const content = await page.$eval('#react-root', el => el.outerHTML || null);
 
         await global.mongoBase.collection('urls_processing').deleteOne({ _id: path });
         await global.mongoBase.collection('urls_processed').update({
