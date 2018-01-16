@@ -29,7 +29,7 @@ module.exports = {
             ref: 'origin/master',
             repo: 'https://github.com/fabien-h/icemachineprerenderer.git',
             path: '/var/www/',
-            'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
+            'post-deploy': '/home/fabien/.nvm/versions/node/v9.4.0/bin/npm install && pm2 reload ecosystem.config.js --env production'
         },
     }
 };
