@@ -24,7 +24,7 @@ module.exports = {
      */
     deploy: {
         production: {
-            user: 'node',
+            user: 'fabien',
             host: '67.205.163.60',
             ref: 'origin/master',
             repo: 'git@github.com:fabien-h/icemachineprerenderer.git',
