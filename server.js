@@ -37,8 +37,8 @@ initBrowser(PAGES_COUNT);
 
 /**
  * The server will serve only two route :
- * 		- /getprerenderdata
- * 		- /buildprerenderdata
+ *      - /getprerenderdata
+ *      - /buildprerenderdata
  */
 const server = http.createServer(
     (request, response) => {
@@ -62,3 +62,8 @@ const server = http.createServer(
 
 server.listen(8080);
 console.log('***** APP STARTED *****');
+
+/**
+ * Make the process restart every ten hours
+ */
+setTimeout(() => process.exit(0), 10 * 60 * 60 * 1000);

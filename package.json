@@ -1,9 +1,9 @@
 {
   "name": "icemachineprerenderer",
   "version": "1.0.0",
-  "main": "src/server.js",
+  "main": "server.js",
   "scripts": {
-    "dev_server_localDB": "nodemon src/server.js --mongoURL mongodb://localhost:3001/icemachineprerenderer",
+    "dev_server_localDB": "nodemon server.js --mongoURL mongodb://localhost:3001/icemachineprerenderer",
     "dev_database": "mkdir -p data && mongod --dbpath=data --port 3001",
     "deploy": "node deploy.js"
   },

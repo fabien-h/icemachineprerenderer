@@ -5,6 +5,8 @@
 - It will take a list of URLs on `/postpagestoprerender`. Those URLs will be prerendered with [Chrome Headless](https://developers.google.com/web/updates/2017/04/headless-chrome) and the html content and the meta will be saved in a local MongoDB base.
 - It will serve the content cached on `/getprerenderdata?pagePath=__path__`. The main application will request it before serving it to the end client.
 
+> Every 10 hours, the service will fetch the current sitemap and regenerate everything
+
 # Dev
 
 Make sure you have dependencies installed :

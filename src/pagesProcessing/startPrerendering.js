@@ -35,27 +35,36 @@ async function askForPrerendering() {
 
 async function prerender(targetPage, path) {
 
-    console.time('rendered : ' + path);
+    console.log('Start prerendering : ' + path);
+    console.time('Rendered : ' + path);
     const page = targetPage.page
+
     await page.evaluate(`ReactionRouter.go('/')`);
     await page.evaluate(`ReactionRouter.go('${path}')`);
-    await page.waitForSelector('#prerenderForHeadlessReady', { timeout: 15000 });
+    let ready = false;
+    try {
+        await page.waitForSelector('#prerenderForHeadlessReady', { timeout: 15000 });
+        ready = true;
+    } catch (error) {
+        console.log('Error when prerendering page : ' + path);
+    }
 
-    const title = await page.evaluate(`(document.querySelector('title') || {} ).textContent || ''`);
-    const description = await page.evaluate(`(document.querySelector('meta[name="description"]') || {} ).content || ''`);
-    const image = await page.evaluate(`(document.querySelector('meta[property="og:image"]') || {} ).content || ''`);
-    const price = await page.evaluate(`(document.querySelector('meta[property="product:price:amount"]') || {}).content || ''`);
-    const brand = await page.evaluate(`(document.querySelector('meta[property="og:brand"]') || {}).content || ''`);
-    const keywords = await page.evaluate(`(document.querySelector('meta[name="keywords"]') || {} ).content || ''`);
-    const content = await page.$eval('#react-root', el => el.innerHTML || null);
+    if (ready) {
+        const title = await page.evaluate(`(document.querySelector('title') || {} ).textContent || ''`);
+        const description = await page.evaluate(`(document.querySelector('meta[name="description"]') || {} ).content || ''`);
+        const image = await page.evaluate(`(document.querySelector('meta[property="og:image"]') || {} ).content || ''`);
+        const price = await page.evaluate(`(document.querySelector('meta[property="product:price:amount"]') || {}).content || ''`);
+        const brand = await page.evaluate(`(document.querySelector('meta[property="og:brand"]') || {}).content || ''`);
+        const keywords = await page.evaluate(`(document.querySelector('meta[name="keywords"]') || {} ).content || ''`);
+        const content = await page.$eval('#react-root', el => el.innerHTML || null);
 
-    await global.mongoBase.collection('urls_processing').deleteOne({ _id: path });
-    await global.mongoBase.collection('urls_processed').update({
-        _id: path,
-    }, {
-        _id: path,
-        html: content,
-        meta: `
+        await global.mongoBase.collection('urls_processing').deleteOne({ _id: path });
+        await global.mongoBase.collection('urls_processed').update({
+            _id: path,
+        }, {
+            _id: path,
+            html: content,
+            meta: `
 <title>${title}</title>
 <meta name="description" content="${description}" >
 <meta name="keywords" content="${keywords}" >
@@ -72,10 +81,11 @@ async function prerender(targetPage, path) {
 <meta property="product:price:currency" content="USD" >
 <meta property="product:price:amount" content="${price}" >
 <link rel="canonical" href="https://www.icemachinesplus.io${path}" >`
-    }, {
-        upsert: true
-    });
-    console.timeEnd('rendered : ' + path);
+        }, {
+            upsert: true
+        });
+    }
+    console.timeEnd('Rendered : ' + path);
 
     /* Set the page back to available */
     targetPage.status = 'ready';
