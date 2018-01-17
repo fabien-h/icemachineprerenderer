@@ -37,11 +37,13 @@ module.exports = async PAGES_COUNT => {
       // The whole response has been received. Print out the result.
       response.on('end', () => {
         const urls = sitemap
-          .match(/<loc>https:\/\/www.icemachinesplus.io.+<\/loc>/g)
+          .match(
+            /<url><loc>https:\/\/www.icemachinesplus.io.+<\/loc><lastmod>/g
+          )
           .map(st =>
             st
-              .replace('<loc>https://www.icemachinesplus.io', '')
-              .replace('</loc>', '')
+              .replace('<url><loc>https://www.icemachinesplus.io', '')
+              .replace('</loc><lastmod>', '')
           );
 
         /* Push the urls in the database */
