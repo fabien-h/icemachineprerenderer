@@ -12,9 +12,11 @@ module.exports = async () => {
 
 async function initPage() {
   /* Init the page and block all the unwanted requests */
+  const id = new Date().getTime();
   let exportedPage = {
     page: await global.browser.newPage(),
-    status: 'ready'
+    status: 'ready',
+    id: id
   };
   exportedPage.page.removeAllListeners();
 
@@ -22,12 +24,15 @@ async function initPage() {
 
   // Page crash => remove and recreate one
   await exportedPage.page.on('error', () => {
-    exportedPage.status = 'ready';
-    startPrerendering();
+    global.browserPages = global.browserPages.filter(page => page.id !== id);
+    return setTimeout(initPage);
   });
 
   // Error on the page => be ready and start next one
-  await exportedPage.page.on('pageerror', () => console.error('page error'));
+  await exportedPage.page.on('pageerror', () => {
+    exportedPage.status = 'ready';
+    return startPrerendering();
+  });
 
   /* Intercept the type of requests that we do not want to load */
   await exportedPage.page.setRequestInterception(true);
