@@ -100,7 +100,8 @@ async function prerender(targetPage, path) {
 <meta property="og:availability" content="instock" >
 <meta property="product:price:currency" content="USD" >
 <meta property="product:price:amount" content="${price}" >
-<link rel="canonical" href="https://www.icemachinesplus.io${path}" >`
+<link rel="canonical" href="https://www.icemachinesplus.io${path}" >`,
+        lastUpdate: new Date()
       },
       {
         upsert: true
