@@ -5,6 +5,7 @@ const https = require('https');
 const puppeteer = require('puppeteer');
 const initBrowserPage = require('./initBrowserPage.js');
 const startPrerendering = require('./startPrerendering.js');
+const parseString = require('xml2js').parseString;
 
 /**
  * Exports
@@ -36,36 +37,31 @@ module.exports = async PAGES_COUNT => {
 
       // The whole response has been received. Print out the result.
       response.on('end', () => {
-        const urls = sitemap
-          .match(
-            /<url><loc>https:\/\/www.icemachinesplus.io.+<\/loc><lastmod>/g
-          )
-          .map(st =>
-            st
-              .replace('<url><loc>https://www.icemachinesplus.io', '')
-              .replace('</loc><lastmod>', '')
+        return parseString(sitemap, (err, result) => {
+          const urls = result.urlset.url.map(u =>
+            u.loc[0].replace('https://www.icemachinesplus.io', '')
           );
+          /* Push the urls in the database */
+          let bulkOperationAdd = global.mongoBase
+            .collection('urls_to_process')
+            .initializeUnorderedBulkOp();
+          for (let url of urls)
+            bulkOperationAdd
+              .find({ _id: url })
+              .upsert()
+              .updateOne({ _id: url });
+          bulkOperationAdd.execute();
 
-        /* Push the urls in the database */
-        let bulkOperationAdd = global.mongoBase
-          .collection('urls_to_process')
-          .initializeUnorderedBulkOp();
-        for (let url of urls)
-          bulkOperationAdd
-            .find({ _id: url })
-            .upsert()
-            .updateOne({ _id: url });
-        bulkOperationAdd.execute();
+          /* Remove those urls from the processing collection */
+          let bulkOperationDelete = global.mongoBase
+            .collection('urls_processing')
+            .initializeUnorderedBulkOp();
+          for (let url of urls) bulkOperationDelete.find({ _id: url }).remove();
+          bulkOperationDelete.execute();
 
-        /* Remove those urls from the processing collection */
-        let bulkOperationDelete = global.mongoBase
-          .collection('urls_processing')
-          .initializeUnorderedBulkOp();
-        for (let url of urls) bulkOperationDelete.find({ _id: url }).remove();
-        bulkOperationDelete.execute();
-
-        /* Start prerendering */
-        startPrerendering();
+          /* Start prerendering */
+          return startPrerendering();
+        });
       });
     })
     .on('error', error => {
