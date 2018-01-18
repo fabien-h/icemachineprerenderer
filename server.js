@@ -28,7 +28,7 @@ mongodb.MongoClient.connect(mongoBaseUrl, (err, client) => {
  */
 global.browser;
 global.browserPages = [];
-const PAGES_COUNT = 5;
+const PAGES_COUNT = 2;
 initBrowser(PAGES_COUNT);
 
 /**
