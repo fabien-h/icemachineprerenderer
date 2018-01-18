@@ -48,6 +48,9 @@ async function prerender(targetPage, path) {
     await page.waitForSelector('#prerenderForHeadlessReady', {
       timeout: 15000
     });
+    await page.waitForSelector('#prerenderHeaderForHeadlessReady', {
+      timeout: 15000
+    });
     ready = true;
   } catch (error) {
     console.log('Error when prerendering page : ' + path);
