@@ -29,7 +29,7 @@ mongodb.MongoClient.connect(mongoBaseUrl, (err, client) => {
 global.browser;
 global.browserPages = [];
 const PAGES_COUNT = 2;
-initBrowser(PAGES_COUNT);
+// initBrowser(PAGES_COUNT);
 
 /**
  * The server will serve only two route :
