@@ -22,6 +22,9 @@ async function initPage() {
 
   console.log('start init page');
 
+  // Set size
+  await exportedPage.page.setViewport({ width: 1280, height: 800 });
+
   // Page crash => remove and recreate one
   await exportedPage.page.on('error', () => {
     global.browserPages = global.browserPages.filter(page => page.id !== id);
