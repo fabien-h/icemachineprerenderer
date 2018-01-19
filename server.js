@@ -55,8 +55,3 @@ const server = http.createServer((request, response) => {
 
 server.listen(8080);
 console.log('***** APP STARTED *****');
-
-/**
- * Make the process restart every ten hours
- */
-setTimeout(() => process.exit(0), 10 * 60 * 60 * 1000);
