@@ -22,7 +22,7 @@ module.exports = {
             exec_mode: "fork",
             watch: true,
             ignore_watch: ["node_modules"],
-            max_memory_restart: "150M",
+            max_memory_restart: "800M",
             merge_logs: true
         },
     ],
@@ -41,4 +41,4 @@ module.exports = {
             'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
         },
     }
-};
+80
