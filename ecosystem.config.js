@@ -22,7 +22,7 @@ module.exports = {
             exec_mode: "fork",
             watch: true,
             ignore_watch: ["node_modules"],
-            max_memory_restart: "400M",
+            max_memory_restart: "150M",
             merge_logs: true
         },
     ],
