@@ -41,4 +41,4 @@ module.exports = {
             'post-deploy': 'npm install && pm2 reload ecosystem.config.js --env production'
         },
     }
-80
+};
