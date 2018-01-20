@@ -21,8 +21,8 @@ module.exports = {
             instances: 1,
             exec_mode: "fork",
             watch: true,
-            ignore_watch: ["node_modules", ".git"],
-            max_memory_restart: "800M",
+            ignore_watch: ["node_modules", ".git", "data"],
+            max_memory_restart: "500M",
             merge_logs: true
         },
     ],

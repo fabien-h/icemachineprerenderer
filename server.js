@@ -25,11 +25,11 @@ const initBrowser = require('./src/pagesProcessing/initBrowser.js');
 
 /**
  * Init pupeteer the browser pages
+ */
  global.browser;
  global.browserPages = [];
- const PAGES_COUNT = 1;
+ const PAGES_COUNT = 5;
  initBrowser(PAGES_COUNT);
- */
 
 /**
  * The server will serve only two route :

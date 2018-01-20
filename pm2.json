@@ -1,0 +1,19 @@
+{
+    "name": "icemachineprerenderer",
+    "script": "server.js",
+    "env": {
+        "COMMON_VARIABLE": "true"
+    },
+    "env_production": {
+        "NODE_ENV": "production"
+    },
+    "args": ["--mongoURL", "mongodb://localhost:3001/local"],
+    "interpreter": "node",
+    "node_args": "",
+    "instances": 1,
+    "exec_mode": "fork",
+    "watch": ["src", "server.js"],
+    "ignore_watch": ["node_modules", ".git", "data"],
+    "max_memory_restart": "500M",
+    "merge_logs": true
+}
