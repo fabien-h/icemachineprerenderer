@@ -30,3 +30,8 @@ The deployment process is started with `pm2 deploy productionFabien update`. => 
 Our production server is `67.205.163.60`. Before deployment, you need to install your own SSH keys on the server.
 
 To monitor and debug the service, login to the server with `ssh yourUserName@67.205.163.60` ; then you can launch the monitor with `pm2 monit`.
+
+We need to have a cron that destroy all the chrome instances and restart the pm2 process every three hours.
+
+    killall chrome
+    pm2 restart all

@@ -28,7 +28,7 @@ const initBrowser = require('./src/pagesProcessing/initBrowser.js');
  */
  global.browser;
  global.browserPages = [];
- const PAGES_COUNT = 5;
+ const PAGES_COUNT = 3;
  initBrowser(PAGES_COUNT);
 
 /**
