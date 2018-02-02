@@ -1,8 +1,5 @@
 {
-  "watch": [
-    "src/**/*.js",
-    "package.json"
-  ],
+  "watch": ["src/**/*.js", "package.json"],
   "verbose": true,
   "execMap": {
     "js": "node --harmony"
