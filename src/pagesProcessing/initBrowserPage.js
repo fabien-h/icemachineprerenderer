@@ -23,7 +23,7 @@ async function initPage() {
   console.log('start init page');
 
   // Set size
-  await exportedPage.page.setViewport({ width: 1024, height: 300 });
+  await exportedPage.page.setViewport({ width: 1500, height: 300 });
 
   // Page crash => remove and recreate one
   await exportedPage.page.on('error', () => {
