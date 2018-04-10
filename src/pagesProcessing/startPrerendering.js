@@ -48,9 +48,6 @@ async function prerender(targetPage, path) {
     await page.waitForSelector('#prerenderForHeadlessReady', {
       timeout: 15000
     });
-    await page.waitForSelector('#prerenderHeaderForHeadlessReady', {
-      timeout: 15000
-    });
     if (/\/product\//.test(path)) {
       await page.waitForSelector('.yotpo-logo-title', {
         timeout: 15000
