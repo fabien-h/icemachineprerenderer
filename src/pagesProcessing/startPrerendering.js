@@ -101,12 +101,12 @@ async function prerender(targetPage, path) {
 <meta property="og:image" content="${image}" >
 <meta property="og:type" content="og:product" >
 <meta property="og:site_name" content="IceMachine+" >
-<meta property="og:url" content="https://www.icemachinesplus.io${path}" >
+<meta property="og:url" content="https://www.icemachinesplus.com${path}" >
 <meta property="og:brand" content="${brand}" >
 <meta property="og:availability" content="instock" >
 <meta property="product:price:currency" content="USD" >
 <meta property="product:price:amount" content="${price}" >
-<link rel="canonical" href="https://www.icemachinesplus.io${path}" >`,
+<link rel="canonical" href="https://www.icemachinesplus.com${path}" >`,
         lastUpdate: new Date()
       },
       {

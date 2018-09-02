@@ -42,7 +42,7 @@ async function initPage() {
   exportedPage.page.on('request', request => {
     if (/yotpo.com/.test(request.url)) request.continue();
     else if (
-      request.url.indexOf('https://www.icemachinesplus.io') === -1 ||
+      request.url.indexOf('https://www.icemachinesplus.com') === -1 ||
       ['Stylesheet', 'Image', 'Media', 'Font'].includes(request.resourceType) ||
       /\.(png|jpg|jpeg|gif|svg|webp|css|woff2|bmp|mp4|eot|woff|ttf)$/i.test(
         request.url
@@ -53,7 +53,7 @@ async function initPage() {
   });
 
   /* Get the home page to initialize the data and the websocket */
-  await exportedPage.page.goto('https://www.icemachinesplus.io/');
+  await exportedPage.page.goto('https://www.icemachinesplus.com/');
   await exportedPage.page.waitForSelector('#prerenderForHeadlessReady', {
     timeout: 15000
   });

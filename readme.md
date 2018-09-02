@@ -1,6 +1,6 @@
 # Goal
 
-[Ice machine website](https://www.icemachinesplus.io/) will serve prerendered version of its pages. The service will serve two purpose :
+[Ice machine website](https://www.icemachinesplus.com/) will serve prerendered version of its pages. The service will serve two purpose :
 
 * It will take a list of URLs on `/postpagestoprerender`. Those URLs will be prerendered with [Chrome Headless](https://developers.google.com/web/updates/2017/04/headless-chrome) and the html content and the meta will be saved in a local MongoDB base.
 * It will serve the content cached on `/getprerenderdata?pagePath=__path__`. The main application will request it before serving it to the end client.
