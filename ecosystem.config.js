@@ -38,7 +38,7 @@ module.exports = {
       repo: 'https://github.com/fabien-h/icemachineprerenderer.git',
       path: '/var/www/',
       'post-deploy':
-        'sudo npm install && pm2 reload ecosystem.config.js --env production'
+        'npm install && pm2 reload ecosystem.config.js --env production'
     }
   }
 };
