@@ -31,8 +31,8 @@ module.exports = {
    * http://pm2.keymetrics.io/docs/usage/deployment/
    */
   deploy: {
-    productionFabien: {
-      user: 'fabien',
+    productionRaymond: {
+      user: 'raymond',
       host: '67.205.163.60',
       ref: 'origin/master',
       repo: 'https://github.com/fabien-h/icemachineprerenderer.git',
