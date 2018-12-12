@@ -39,6 +39,15 @@ module.exports = {
       path: '/var/www/',
       'post-deploy':
         'npm install && pm2 reload ecosystem.config.js --env production'
+    },
+    productionFabien: {
+      user: 'fabien',
+      host: '67.205.163.60',
+      ref: 'origin/master',
+      repo: 'https://github.com/fabien-h/icemachineprerenderer.git',
+      path: '/var/www/',
+      'post-deploy':
+        'npm install && pm2 reload ecosystem.config.js --env production'
     }
   }
 };
