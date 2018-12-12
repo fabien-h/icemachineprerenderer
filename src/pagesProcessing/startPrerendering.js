@@ -50,7 +50,7 @@ async function prerender(targetPage, path) {
     });
     if (/\/product\//.test(path)) {
       await page.waitForSelector('.yotpo-logo-title', {
-        timeout: 15000
+        timeout: 30000
       });
     }
     ready = true;
