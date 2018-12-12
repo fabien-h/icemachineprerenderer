@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "pm2 start pm2.json",
     "dev_database": "mkdir -p data && mongod --dbpath=data --port 27017",
-    "deploy": "pm2 deploy productionRaymond update"
+    "deploy": "pm2 deploy production update"
   },
   "author": "",
   "license": "ISC",
