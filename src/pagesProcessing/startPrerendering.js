@@ -49,7 +49,7 @@ async function prerender(targetPage, path) {
       timeout: 15000
     });
     if (/\/product\//.test(path)) {
-      await page.waitForSelector('.yotpo-logo-title', {
+      await page.waitForSelector('.merchantheader', {
         timeout: 15000
       });
     }
